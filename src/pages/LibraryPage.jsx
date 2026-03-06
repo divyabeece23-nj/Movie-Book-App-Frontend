@@ -1,5 +1,5 @@
 import MediaCard from "../components/media/MediaCard.jsx";
-import "./LibraryPage.css";
+import "./LibraryPage.scss";
 
 export default function LibraryPage({ favorites, onFavoriteToggle, onCardClick, onGoDiscover }) {
     return (

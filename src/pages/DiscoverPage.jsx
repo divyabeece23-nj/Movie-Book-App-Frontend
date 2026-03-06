@@ -2,7 +2,7 @@ import { useState } from "react";
 import MediaCard from "../components/media/MediaCard.jsx";
 import Spinner from "../components/ui/Spinner.jsx";
 import { searchMedia } from "../api/api.js";
-import "./DiscoverPage.css";
+import "./DiscoverPage.scss";
 
 export default function DiscoverPage({ favorites, onFavoriteToggle, onCardClick }) {
     const [query, setQuery] = useState("");

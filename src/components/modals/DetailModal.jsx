@@ -3,7 +3,7 @@ import StarRating from "../ui/StarRating.jsx";
 import ReviewForm from "../reviews/ReviewForm.jsx";
 import Spinner from "../ui/Spinner.jsx";
 import { getReviews } from "../../api/api.js";
-import "./DetailModal.css";
+import "./DetailModal.scss";
 
 export default function DetailModal({ item, token, onClose }) {
     const [reviews, setReviews] = useState([]);

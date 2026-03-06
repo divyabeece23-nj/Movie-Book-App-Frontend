@@ -1,7 +1,7 @@
 import { useState } from "react";
 import StarRating from "../ui/StarRating.jsx";
 import { postReview } from "../../api/api.js";
-import "./ReviewForm.css";
+import "./ReviewForm.scss";
 
 export default function ReviewForm({ mediaId, mediaType, token, onReviewAdded }) {
     const [rating, setRating] = useState(0);
