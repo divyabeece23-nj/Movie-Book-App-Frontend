@@ -1,0 +1,184 @@
+@use '../styles/variables' as *;
+@use '../styles/mixins' as *;
+@use '../styles/function' as *;
+
+// ── Hero ──────────────────────────────────────────────────────────────────────
+.hero {
+    position: relative;
+    padding: pxToRem(60) pxToRem(16) pxToRem(50);
+    overflow: hidden;
+
+    @include tablet {
+        padding: pxToRem(80) pxToRem(24) pxToRem(60);
+    }
+
+    @include desktop {
+        padding: pxToRem(100) pxToRem(24) pxToRem(80);
+    }
+
+    &__bg {
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(ellipse 80% 60% at 50% 0%,
+                rgba($color-gold, 0.12) 0%,
+                transparent 70%);
+        pointer-events: none;
+    }
+
+    &__content {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        max-width: pxToRem(640);
+        margin: 0 auto;
+    }
+
+    &__title {
+        font-family: $font-serif;
+        font-size: clamp(pxToRem(32), 6vw, pxToRem(68));
+        font-weight: 700;
+        line-height: 1.1;
+        letter-spacing: -1px;
+        color: $color-text;
+        margin-bottom: pxToRem(16);
+
+        em {
+            color: $color-gold;
+            font-style: italic;
+        }
+    }
+
+    &__sub {
+        font-family: $font-sans;
+        font-size: pxToRem(15);
+        font-weight: 300;
+        color: $color-grey;
+        line-height: 1.6;
+        margin-bottom: pxToRem(32);
+        max-width: pxToRem(480);
+
+        @include tablet {
+            font-size: pxToRem(16);
+            margin-bottom: pxToRem(36);
+        }
+
+        @include desktop {
+            font-size: pxToRem(17);
+            margin-bottom: pxToRem(40);
+        }
+    }
+}
+
+// ── Search Bar ────────────────────────────────────────────────────────────────
+.search-bar {
+    width: 100%;
+    background-color: $color-surface;
+    border: 1px solid $color-border;
+    border-radius: pxToRem(16);
+    padding: pxToRem(8);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: pxToRem(8);
+
+    &__input {
+        flex: 1 1 pxToRem(140);
+        background: none;
+        border: none;
+        outline: none;
+        font-family: $font-sans;
+        font-size: pxToRem(15);
+        color: $color-text;
+        padding: pxToRem(6) pxToRem(8);
+
+        &::placeholder {
+            color: $color-grey;
+        }
+    }
+
+    &__btn {
+        flex-shrink: 0;
+        background-color: $color-gold;
+        color: $color-bg;
+        font-family: $font-sans;
+        font-size: pxToRem(14);
+        font-weight: 600;
+        border: none;
+        padding: pxToRem(10) pxToRem(20);
+        border-radius: pxToRem(10);
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+        white-space: nowrap;
+
+        &:hover {
+            background-color: $color-gold-light;
+        }
+
+        @include tablet {
+            padding: pxToRem(10) pxToRem(24);
+        }
+    }
+}
+
+// ── Type Toggle ───────────────────────────────────────────────────────────────
+.type-toggle {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: pxToRem(4);
+
+    button {
+        background: none;
+        border: none;
+        color: $color-grey;
+        font-family: $font-sans;
+        font-size: pxToRem(13);
+        font-weight: 500;
+        padding: pxToRem(6) pxToRem(10);
+        border-radius: pxToRem(8);
+        cursor: pointer;
+        transition: all 0.2s ease;
+        white-space: nowrap;
+
+        @include tablet {
+            padding: pxToRem(6) pxToRem(12);
+        }
+
+        &.active {
+            background-color: $color-surface2;
+            color: $color-text;
+        }
+
+        &:hover:not(.active) {
+            color: $color-text;
+        }
+    }
+}
+
+// ── Results ───────────────────────────────────────────────────────────────────
+.discover__results {
+    max-width: pxToRem(1280);
+    margin: 0 auto;
+    padding: pxToRem(8) pxToRem(16) pxToRem(80);
+
+    @include tablet {
+        padding: pxToRem(8) pxToRem(24) pxToRem(80);
+    }
+
+    @include desktop {
+        padding: pxToRem(16) pxToRem(24) pxToRem(80);
+    }
+}
+
+.error-msg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $color-red;
+    font-family: $font-sans;
+    font-size: pxToRem(15);
+    padding: pxToRem(32);
+}

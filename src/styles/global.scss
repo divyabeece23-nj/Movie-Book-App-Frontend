@@ -1,0 +1,159 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+@use 'function' as *;
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap');
+
+// ── Reset ─────────────────────────────────────────────────────────────────────
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+// ── Base ──────────────────────────────────────────────────────────────────────
+body {
+  background-color: $color-bg;
+  color: $color-text;
+  font-family: $font-sans;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img   { display: block; max-width: 100%; }
+button { font-family: $font-sans; }
+a     { text-decoration: none; color: inherit; }
+
+// ── Shared Button ─────────────────────────────────────────────────────────────
+.btn-primary {
+  background-color: $color-gold;
+  color: $color-bg;
+  font-family: $font-sans;
+  font-size: pxToRem(14);
+  font-weight: 600;
+  border: none;
+  padding: pxToRem(12) pxToRem(24);
+  border-radius: pxToRem(10);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  width: 100%;
+
+  &:hover       { background-color: $color-gold-light; }
+  &:disabled    { opacity: 0.5; cursor: not-allowed; }
+  &.small       { width: auto; padding: pxToRem(8) pxToRem(16); font-size: pxToRem(13); }
+}
+
+// ── Shared Input ──────────────────────────────────────────────────────────────
+.input {
+  background-color: $color-surface2;
+  border: 1px solid $color-border;
+  border-radius: pxToRem(10);
+  color: $color-text;
+  font-family: $font-sans;
+  font-size: pxToRem(14);
+  padding: pxToRem(12) pxToRem(14);
+  outline: none;
+  width: 100%;
+  transition: border-color 0.2s ease;
+
+  &::placeholder { color: $color-grey; }
+  &:focus        { border-color: $color-gold; }
+}
+
+// ── Section Title ─────────────────────────────────────────────────────────────
+.section-title {
+  font-family: $font-serif;
+  font-size: pxToRem(22);
+  font-weight: 400;
+  color: $color-text;
+  margin-bottom: pxToRem(24);
+
+  @include tablet  { font-size: pxToRem(24); margin-bottom: pxToRem(28); }
+  @include desktop { font-size: pxToRem(26); }
+}
+
+// ── Flex Card Grid ────────────────────────────────────────────────────────────
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: pxToRem(12);
+
+  // 2 columns on mobile
+  & > * {
+    flex: 1 1 calc(50% - pxToRem(12));
+    min-width: pxToRem(130);
+    max-width: calc(50% - pxToRem(12));
+  }
+
+  // 3 columns on tablet
+  @include tablet {
+    gap: pxToRem(16);
+
+    & > * {
+      flex: 1 1 calc(33.333% - pxToRem(16));
+      min-width: pxToRem(150);
+      max-width: calc(33.333% - pxToRem(16));
+    }
+  }
+
+  // 5 columns on desktop
+  @include desktop {
+    gap: pxToRem(20);
+
+    & > * {
+      flex: 1 1 calc(20% - pxToRem(20));
+      min-width: pxToRem(160);
+      max-width: calc(20% - pxToRem(20));
+    }
+  }
+}
+
+// ── Spinner ───────────────────────────────────────────────────────────────────
+.spinner-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: pxToRem(48);
+}
+
+.spinner {
+  width: pxToRem(32);
+  height: pxToRem(32);
+  border: 3px solid $color-border;
+  border-top-color: $color-gold;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+// ── Misc ──────────────────────────────────────────────────────────────────────
+.form-error {
+  font-family: $font-sans;
+  font-size: pxToRem(13);
+  color: $color-red;
+}
+
+.empty-state {
+  text-align: center;
+  color: $color-grey;
+  padding: pxToRem(60);
+  font-family: $font-sans;
+  font-size: pxToRem(15);
+}
+
+// ── Modal Backdrop ────────────────────────────────────────────────────────────
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: pxToRem(24);
+  backdrop-filter: blur(6px);
+}

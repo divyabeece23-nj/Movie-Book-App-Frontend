@@ -1,0 +1,18 @@
+@use '../../styles/variables' as *;
+@use '../../styles/function' as *;
+
+.stars {
+    display: flex;
+    gap: pxToRem(3);
+}
+
+.star {
+    font-size: pxToRem(18);
+    color: $color-border;
+    line-height: 1;
+    transition: color 0.15s ease;
+
+    &.filled {
+        color: $color-gold;
+    }
+}

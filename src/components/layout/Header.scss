@@ -1,0 +1,145 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+@use '../../styles/function' as *;
+
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: rgba(12, 12, 15, 0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid $color-border;
+}
+
+.header-inner {
+    max-width: pxToRem(1280);
+    margin: 0 auto;
+    padding: 0 pxToRem(16);
+    height: pxToRem(64);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: pxToRem(16);
+
+    @include tablet {
+        padding: 0 pxToRem(24);
+        gap: pxToRem(32);
+    }
+}
+
+// ── Logo ──────────────────────────────────────────────────────────────────────
+.logo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: pxToRem(8);
+    flex-shrink: 0;
+    text-decoration: none;
+}
+
+.logo-icon {
+    font-size: pxToRem(20);
+    color: $color-gold;
+}
+
+.logo-text {
+    font-family: $font-serif;
+    font-size: pxToRem(20);
+    color: $color-text;
+    letter-spacing: -0.5px;
+
+    @include tablet {
+        font-size: pxToRem(22);
+    }
+
+    em {
+        color: $color-gold;
+        font-style: italic;
+    }
+}
+
+// ── Nav ───────────────────────────────────────────────────────────────────────
+.nav {
+    display: none;
+    flex-direction: row;
+    align-items: center;
+    gap: pxToRem(4);
+    margin-left: auto;
+
+    @include tablet {
+        display: flex;
+    }
+}
+
+.nav-btn {
+    background: none;
+    border: none;
+    color: $color-grey;
+    font-family: $font-sans;
+    font-size: pxToRem(14);
+    padding: pxToRem(6) pxToRem(14);
+    border-radius: pxToRem(20);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: pxToRem(6);
+
+    &:hover {
+        color: $color-text;
+        background-color: $color-surface2;
+    }
+
+    &.active {
+        color: $color-gold;
+        background-color: rgba($color-gold, 0.12);
+    }
+}
+
+.badge {
+    background-color: $color-gold;
+    color: #000;
+    font-family: $font-sans;
+    font-size: pxToRem(11);
+    font-weight: 600;
+    padding: pxToRem(1) pxToRem(6);
+    border-radius: pxToRem(20);
+}
+
+// ── Auth area ─────────────────────────────────────────────────────────────────
+.header-auth {
+    margin-left: auto;
+    flex-shrink: 0;
+
+    @include tablet {
+        margin-left: pxToRem(16);
+    }
+}
+
+.user-chip {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: pxToRem(12);
+    font-family: $font-sans;
+    font-size: pxToRem(14);
+    color: $color-text;
+}
+
+.logout-btn {
+    background: none;
+    border: 1px solid $color-border;
+    color: $color-grey;
+    font-family: $font-sans;
+    font-size: pxToRem(12);
+    padding: pxToRem(4) pxToRem(10);
+    border-radius: pxToRem(6);
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+        color: $color-text;
+        border-color: $color-grey;
+    }
+}

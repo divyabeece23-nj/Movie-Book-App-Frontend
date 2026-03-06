@@ -1,0 +1,41 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+@use '../../styles/function' as *;
+
+.review-form {
+    margin-top: pxToRem(20);
+    padding-top: pxToRem(20);
+    border-top: 1px solid $color-border;
+
+    &__title {
+        font-family: $font-serif;
+        font-size: pxToRem(16);
+        font-weight: 400;
+        color: $color-text;
+        margin-bottom: pxToRem(10);
+    }
+
+    &__textarea {
+        width: 100%;
+        background-color: $color-surface2;
+        border: 1px solid $color-border;
+        border-radius: pxToRem(10);
+        color: $color-text;
+        font-family: $font-sans;
+        font-size: pxToRem(14);
+        padding: pxToRem(12);
+        margin: pxToRem(10) 0;
+        resize: vertical;
+        outline: none;
+        min-height: pxToRem(90);
+        transition: border-color 0.2s ease;
+
+        &::placeholder {
+            color: $color-grey;
+        }
+
+        &:focus {
+            border-color: $color-gold;
+        }
+    }
+}
