@@ -6,7 +6,6 @@ import "./DiscoverPage.scss";
 
 export default function DiscoverPage({ favorites, onFavoriteToggle, onCardClick }) {
     const [query, setQuery] = useState("");
-    const [mediaType, setType] = useState("movie");
     const [results, setResults] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
@@ -22,7 +21,7 @@ export default function DiscoverPage({ favorites, onFavoriteToggle, onCardClick 
         setResults([]);
         setSearched(true);
         try {
-            const data = await searchMedia(query, mediaType);
+            const data = await searchMedia(query, "movie"); // ✅ hardcoded "movie"
             setResults(data);
         } catch (e) {
             setError(e.message);
@@ -33,7 +32,6 @@ export default function DiscoverPage({ favorites, onFavoriteToggle, onCardClick 
 
     return (
         <div className="discover">
-
             <section className="hero">
                 <div className="hero__bg" />
                 <div className="hero__content">
@@ -45,17 +43,9 @@ export default function DiscoverPage({ favorites, onFavoriteToggle, onCardClick 
                     </p>
 
                     <div className="search-bar">
-                        <div className="type-toggle">
-                            <button className={mediaType === "movie" ? "active" : ""} onClick={() => setType("movie")}>
-                                🎬 Movies
-                            </button>
-                            <button className={mediaType === "book" ? "active" : ""} onClick={() => setType("book")}>
-                                📚 Books
-                            </button>
-                        </div>
                         <input
                             className="search-bar__input"
-                            placeholder={`Search ${mediaType === "movie" ? "movies" : "books"}…`}
+                            placeholder="Search movies…"
                             value={query}
                             onChange={(e) => setQuery(e.target.value)}
                             onKeyDown={(e) => e.key === "Enter" && search()}
@@ -73,9 +63,9 @@ export default function DiscoverPage({ favorites, onFavoriteToggle, onCardClick 
                     <>
                         <h2 className="section-title">Results for "{query}"</h2>
                         <div className="grid">
-                            {results.map((item) => (
+                            {results.map((item, index) => (
                                 <MediaCard
-                                    key={item.imdbID || item.id}
+                                    key={`${item.imdbID || item.id}-${index}`}
                                     item={item}
                                     isFav={isFav(item)}
                                     onFavorite={onFavoriteToggle}
@@ -90,7 +80,6 @@ export default function DiscoverPage({ favorites, onFavoriteToggle, onCardClick 
                     <p className="empty-state">No results found for "{query}"</p>
                 )}
             </section>
-
         </div>
     );
 }

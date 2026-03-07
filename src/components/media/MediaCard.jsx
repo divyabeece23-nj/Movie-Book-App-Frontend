@@ -1,4 +1,4 @@
-import "./MediaCard.css";
+import "./MediaCard.scss";
 
 export default function MediaCard({ item, onFavorite, isFav, onClick }) {
     const poster = item.Poster !== "N/A" ? item.Poster : item.thumbnail || null;

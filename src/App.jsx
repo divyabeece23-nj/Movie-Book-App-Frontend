@@ -33,7 +33,7 @@ function AppContent() {
             } else {
                 const fav = await addFavorite(token, {
                     mediaId: id,
-                    mediaType: item.type === "book" ? "book" : "movie",
+                    mediaType: "movie",
                     title: item.Title || item.title,
                     poster: item.Poster || item.thumbnail,
                     year: item.Year || item.publishedDate?.slice(0, 4),
@@ -54,7 +54,6 @@ function AppContent() {
 
             <main>
                 <Routes>
-                    {/* Public route */}
                     <Route
                         path="/"
                         element={
@@ -66,7 +65,6 @@ function AppContent() {
                         }
                     />
 
-                    {/* Protected route — redirect to home if not logged in */}
                     <Route
                         path="/library"
                         element={
@@ -82,7 +80,6 @@ function AppContent() {
                         }
                     />
 
-                    {/* Catch-all */}
                     <Route path="*" element={<Navigate to="/" replace />} />
                 </Routes>
             </main>

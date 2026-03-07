@@ -1,28 +1,38 @@
+import { NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext.jsx";
-import "./Header.css";
+import "./Header.scss";
 
-export default function Header({ tab, onTabChange, favCount, onAuthClick }) {
+export default function Header({ favCount, onAuthClick }) {
     const { user, logout } = useAuth();
+    const navigate = useNavigate();
+
+    const handleLibraryClick = () => {
+        if (!user) {
+            onAuthClick();
+        } else {
+            navigate("/library");
+        }
+    };
 
     return (
         <header className="header">
             <div className="header-inner">
 
-                <div className="logo">
+                <NavLink to="/" className="logo">
                     <span className="logo-icon">◈</span>
                     <span className="logo-text">Reel<em>Reads</em></span>
-                </div>
+                </NavLink>
 
                 <nav className="nav">
-                    <button
-                        className={`nav-btn ${tab === "search" ? "active" : ""}`}
-                        onClick={() => onTabChange("search")}
+                    <NavLink
+                        to="/"
+                        className={({ isActive }) => `nav-btn ${isActive ? "active" : ""}`}
                     >
                         Discover
-                    </button>
+                    </NavLink>
                     <button
-                        className={`nav-btn ${tab === "library" ? "active" : ""}`}
-                        onClick={() => user ? onTabChange("library") : onAuthClick()}
+                        className={`nav-btn ${window.location.pathname === "/library" ? "active" : ""}`}
+                        onClick={handleLibraryClick}
                     >
                         My Library
                         {favCount > 0 && <span className="badge">{favCount}</span>}
