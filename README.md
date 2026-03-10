@@ -1,17 +1,126 @@
-# React + Vite
+# ◈ ReelReads — Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> Find. Watch. Read. *Review.*
 
-Currently, two official plugins are available:
+React frontend for ReelReads — a movie and book discovery app with favourites and reviews.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+🔗 **Live Demo:** [movie-book-app-frontend.vercel.app](https://movie-book-app-frontend.vercel.app)  
+🔗 **Backend Repo:** [github.com/yourusername/movie-book-app-backend](https://github.com/yourusername/movie-book-app-backend)
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Features
 
-## Expanding the ESLint configuration
+- 🔍 Search movies and books
+- ❤️ Save and manage a personal favourites library
+- ⭐ Read and write reviews per title
+- 🔐 Register / login with JWT authentication
+- 📱 Fully responsive — mobile, tablet, desktop
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-# Movie-Book-App-Frontend
+---
+
+## Tech Stack
+
+| Tool | Purpose |
+|---|---|
+| React 18 | UI components |
+| React Router v6 | Client-side routing |
+| SCSS | Component-level styling |
+| Vite | Dev server & build |
+| Vercel | Deployment |
+
+---
+
+## Project Structure
+
+```
+src/
+├── api/
+│   └── api.js              # All API call functions
+├── components/
+│   ├── layout/
+│   │   ├── Header.jsx      # Nav with mobile hamburger menu
+│   │   └── Footer.jsx
+│   └── modals/
+│       ├── AuthModal.jsx   # Login / Register modal
+│       └── DetailModal.jsx # Movie / book detail + reviews
+├── context/
+│   └── AuthContext.jsx     # JWT auth state (login, logout, token)
+├── pages/
+│   ├── DiscoverPage.jsx    # Search & browse
+│   └── LibraryPage.jsx     # User's saved favourites
+└── styles/
+    └── global.scss
+```
+
+---
+
+## Getting Started
+
+### Prerequisites
+- Node.js 18+
+- Backend running locally or deployed — see [backend repo](https://github.com/divyabeece23-nj/Movie-Book-App-Backend.git)
+
+### Install & run
+
+```bash
+git clone https://github.com/divyabeece23-nj/Movie-Book-App-Frontend.git
+cd movie-book-app-frontend
+npm install
+```
+
+Create a `.env` file in the root:
+
+```env
+VITE_API_URL=http://localhost:5000/api
+```
+
+```bash
+npm run dev
+# → http://localhost:5173
+```
+
+### Build for production
+
+```bash
+npm run build
+# Output in /dist — drag to netlify.com/drop or deploy via Vercel
+```
+
+---
+
+## Deployment (Vercel)
+
+1. Push to GitHub
+2. Import the repo at [vercel.com](https://vercel.com)
+3. Go to **Settings → Environment Variables** and add:
+   ```
+   VITE_API_URL = https://your-backend.onrender.com/api
+   ```
+4. Deploy — Vercel auto-redeploys on every push to `main`
+
+> ⚠️ After adding or changing env variables, you must **manually redeploy** for them to take effect.
+
+---
+
+## Environment Variables
+
+| Variable | Example | Description |
+|---|---|---|
+| `VITE_API_URL` | `https://your-backend.onrender.com/api` | Backend API base URL |
+
+---
+
+## What I Learned
+
+- Structuring a React app with context, pages, and reusable components
+- JWT auth flow — storing tokens, protecting routes with React Router
+- Debugging CORS errors between a Vercel frontend and Render backend
+- Environment variables in Vite (`import.meta.env`) and why they differ from Node.js
+- Responsive design with SCSS and mobile-first breakpoints
+
+---
+
+## Author
+
+**Divya Natarajan** ·
