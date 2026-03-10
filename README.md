@@ -5,7 +5,7 @@
 React frontend for ReelReads — a movie and book discovery app with favourites and reviews.
 
 🔗 **Live Demo:** [movie-book-app-frontend.vercel.app](https://movie-book-app-frontend.vercel.app)  
-🔗 **Backend Repo:** [github.com/yourusername/movie-book-app-backend](https://github.com/yourusername/movie-book-app-backend)
+🔗 **Backend Repo:** [github.com/yourusername/movie-book-app-backend](https://github.com/divyabeece23-nj/Movie-Book-App-Backend.git)
 
 ---
 
