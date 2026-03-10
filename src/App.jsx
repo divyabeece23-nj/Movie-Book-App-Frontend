@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { AuthProvider, useAuth } from "./context/AuthContext.jsx";
 import Header from "./components/layout/Header.jsx";
+import Footer from "./components/layout/Footer.jsx";
 import DetailModal from "./components/modals/DetailModal.jsx";
 import AuthModal from "./components/modals/AuthModal.jsx";
 import DiscoverPage from "./pages/DiscoverPage.jsx";
@@ -46,13 +47,13 @@ function AppContent() {
     };
 
     return (
-        <>
+        <div className="app-layout">
             <Header
                 favCount={favorites.length}
                 onAuthClick={() => setShowAuth(true)}
             />
 
-            <main>
+            <main className="app-main">
                 <Routes>
                     <Route
                         path="/"
@@ -84,6 +85,8 @@ function AppContent() {
                 </Routes>
             </main>
 
+            <Footer onAuthClick={() => setShowAuth(true)} />
+
             {selectedItem && (
                 <DetailModal
                     item={selectedItem}
@@ -93,7 +96,7 @@ function AppContent() {
             )}
 
             {showAuth && <AuthModal onClose={() => setShowAuth(false)} />}
-        </>
+        </div>
     );
 }
 

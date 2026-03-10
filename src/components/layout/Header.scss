@@ -143,3 +143,110 @@
         border-color: $color-grey;
     }
 }
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+// ── Desktop nav: hide on mobile ───────────────────────────────────────────────
+.nav--desktop {
+    @media (max-width: 640px) {
+        display: none;
+    }
+}
+
+// ── Hamburger button ──────────────────────────────────────────────────────────
+.burger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 36px;
+    height: 36px;
+    padding: 6px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+
+    @media (max-width: 640px) {
+        display: flex;
+    }
+
+    span {
+        display: block;
+        width: 100%;
+        height: 1.5px;
+        background: #fff; // change to match your nav text colour
+        border-radius: 2px;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+        transform-origin: center;
+    }
+
+    // Animate to X when open
+    &.open {
+        span:nth-child(1) {
+            transform: translateY(6.5px) rotate(45deg);
+        }
+
+        span:nth-child(2) {
+            opacity: 0;
+            transform: scaleX(0);
+        }
+
+        span:nth-child(3) {
+            transform: translateY(-6.5px) rotate(-45deg);
+        }
+    }
+}
+
+// ── Mobile dropdown ───────────────────────────────────────────────────────────
+.nav-mobile {
+    display: none;
+    flex-direction: column;
+    background: #1a1a1a; // match your header background
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+
+    @media (max-width: 640px) {
+        display: flex;
+    }
+
+    &--open {
+        max-height: 200px;
+    }
+
+    &__link {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 16px 20px;
+        font-size: 0.95rem;
+        font-weight: 500;
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+        background: transparent;
+        border: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        text-align: left;
+        cursor: pointer;
+        transition: color 0.2s, background 0.2s;
+
+        &:hover,
+        &.active {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        &.active {
+            color: #c9a227; // your gold/accent colour
+        }
+
+        .badge {
+            margin-left: auto;
+        }
+    }
+}
