@@ -83,3 +83,33 @@
         }
     }
 }
+.input--error {
+    border-color: #e05c5c !important;
+}
+
+.form-success {
+    color: #6fbe6f;
+    font-size: 13px;
+    margin-bottom: 12px;
+}
+
+.auth-modal__subtext {
+    color: #888;
+    font-size: 13px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.auth-modal__link {
+    background: none;
+    border: none;
+    color: #888;
+    font-size: 13px;
+    cursor: pointer;
+    padding: 4px 0;
+    display: block;
+    margin: 4px 0 8px;
+    text-align: left;
+
+    &:hover { color: $color-gold; } // swap $gold for your existing variable
+}
