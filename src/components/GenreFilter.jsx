@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./GenreFilter.css";
+import "./GenreFilter.scss";
 
 const GenreFilter = ({ onGenreSelect, selectedGenre }) => {
     const [genres, setGenres] = useState([]);
@@ -7,7 +7,7 @@ const GenreFilter = ({ onGenreSelect, selectedGenre }) => {
     useEffect(() => {
         const fetchGenres = async () => {
             try {
-                const res = await fetch(`${process.env.REACT_APP_API_URL}/api/trending/genres`);
+                const res = await fetch(`${import.meta.env.VITE_API_URL || "http://localhost:5000/api"}/trending/genres`);
                 const data = await res.json();
                 setGenres(data);
             } catch (err) {

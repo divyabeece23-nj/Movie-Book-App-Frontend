@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import GenreFilter from "./GenreFilter";
-import "./TrendingSection.css";
+import "./TrendingSection.scss";
 
 const TrendingSection = ({ onMovieClick }) => {
     const [movies, setMovies] = useState([]);
@@ -8,13 +8,13 @@ const TrendingSection = ({ onMovieClick }) => {
     const [selectedGenre, setSelectedGenre] = useState(null);
     const [loading, setLoading] = useState(true);
 
-    const API_URL = process.env.REACT_APP_API_URL;
+    const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000/api";
 
     // Fetch featured movie of the day
     useEffect(() => {
         const fetchFeatured = async () => {
             try {
-                const res = await fetch(`${API_URL}/api/trending/featured`);
+                const res = await fetch(`${API_URL}/trending/featured`);
                 const data = await res.json();
                 setFeatured(data);
             } catch (err) {
@@ -30,7 +30,7 @@ const TrendingSection = ({ onMovieClick }) => {
             setLoading(true);
             try {
                 const genreParam = selectedGenre ? `?genre=${selectedGenre}` : "";
-                const res = await fetch(`${API_URL}/api/trending${genreParam}`);
+                const res = await fetch(`${API_URL}/trending${genreParam}`);
                 const data = await res.json();
                 setMovies(data);
             } catch (err) {
