@@ -1,0 +1,46 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+@use 'function' as *;
+
+.genre-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: pxToRem(8);
+    padding: pxToRem(10) 0;
+    justify-content: center;
+
+    @include tablet {
+        gap: pxToRem(10);
+    }
+}
+
+.genre-chip {
+    padding: pxToRem(8) pxToRem(18);
+    border-radius: pxToRem(25);
+    border: 1px solid $color-border;
+    background: transparent;
+    color: $color-grey;
+    cursor: pointer;
+    font-family: $font-sans;
+    font-size: pxToRem(13);
+    font-weight: 400;
+    transition: all 0.25s ease;
+
+    @include tablet {
+        font-size: pxToRem(14);
+        padding: pxToRem(8) pxToRem(20);
+    }
+
+    &:hover {
+        background: $color-surface2;
+        color: $color-text;
+        border-color: lighten($color-border, 10%);
+    }
+
+    &.active {
+        background: $color-gold;
+        color: $color-bg;
+        border-color: $color-gold;
+        font-weight: 600;
+    }
+}

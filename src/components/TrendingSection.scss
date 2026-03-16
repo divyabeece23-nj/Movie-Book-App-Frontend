@@ -1,0 +1,338 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+@use 'function' as *;
+
+// ── Trending Section Container ────────────────────────────────────────────────
+.trending-section {
+    max-width: pxToRem(1200);
+    margin: 0 auto;
+    padding: pxToRem(40) pxToRem(16);
+
+    @include tablet {
+        padding: pxToRem(48) pxToRem(24);
+    }
+
+    @include desktop {
+        padding: pxToRem(56) pxToRem(20);
+    }
+}
+
+// ── Featured Movie of the Day ─────────────────────────────────────────────────
+.featured-movie {
+    position: relative;
+    background: linear-gradient(135deg, rgba($color-gold, 0.08), $color-surface);
+    border: 1px solid rgba($color-gold, 0.15);
+    border-radius: pxToRem(16);
+    padding: pxToRem(20);
+    margin-bottom: pxToRem(40);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+
+    @include tablet {
+        padding: pxToRem(28);
+    }
+
+    @include desktop {
+        padding: pxToRem(30);
+    }
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 pxToRem(8) pxToRem(30) rgba($color-gold, 0.12);
+    }
+}
+
+.featured-badge {
+    display: inline-block;
+    background: $color-gold;
+    color: $color-bg;
+    padding: pxToRem(5) pxToRem(14);
+    border-radius: pxToRem(20);
+    font-family: $font-sans;
+    font-size: pxToRem(12);
+    font-weight: 700;
+    margin-bottom: pxToRem(18);
+    letter-spacing: 0.5px;
+}
+
+.featured-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: pxToRem(20);
+
+    @include tablet {
+        flex-direction: row;
+        align-items: flex-start;
+        text-align: left;
+        gap: pxToRem(28);
+    }
+}
+
+.featured-poster {
+    width: pxToRem(140);
+    border-radius: pxToRem(10);
+    box-shadow: 0 pxToRem(4) pxToRem(20) rgba(0, 0, 0, 0.4);
+    flex-shrink: 0;
+
+    @include tablet {
+        width: pxToRem(160);
+    }
+
+    @include desktop {
+        width: pxToRem(180);
+    }
+}
+
+.featured-info {
+    flex: 1;
+}
+
+.featured-title {
+    font-family: $font-serif;
+    font-size: pxToRem(22);
+    color: $color-text;
+    margin: 0 0 pxToRem(8) 0;
+    font-weight: 700;
+
+    @include tablet {
+        font-size: pxToRem(26);
+    }
+
+    @include desktop {
+        font-size: pxToRem(28);
+    }
+}
+
+.featured-meta {
+    color: $color-grey;
+    font-family: $font-sans;
+    font-size: pxToRem(14);
+    margin-bottom: pxToRem(12);
+    display: flex;
+    gap: pxToRem(6);
+    justify-content: center;
+
+    @include tablet {
+        justify-content: flex-start;
+    }
+}
+
+.featured-genres {
+    display: flex;
+    flex-wrap: wrap;
+    gap: pxToRem(8);
+    margin-bottom: pxToRem(14);
+    justify-content: center;
+
+    @include tablet {
+        justify-content: flex-start;
+    }
+}
+
+.featured-genre-tag {
+    background: $color-surface2;
+    color: $color-grey;
+    padding: pxToRem(4) pxToRem(12);
+    border-radius: pxToRem(15);
+    font-family: $font-sans;
+    font-size: pxToRem(12);
+}
+
+.featured-plot {
+    color: $color-grey;
+    font-family: $font-sans;
+    font-size: pxToRem(14);
+    line-height: 1.6;
+    margin: 0 0 pxToRem(10) 0;
+
+    @include tablet {
+        font-size: pxToRem(15);
+    }
+}
+
+.featured-director {
+    color: $color-gold;
+    font-family: $font-sans;
+    font-size: pxToRem(13);
+    margin: 0;
+    font-style: italic;
+}
+
+// ── Trending Header ───────────────────────────────────────────────────────────
+.trending-header {
+    text-align: center;
+    margin-bottom: pxToRem(5);
+}
+
+.trending-title {
+    font-family: $font-serif;
+    font-size: pxToRem(22);
+    color: $color-text;
+    font-weight: 400;
+    margin: 0;
+
+    @include tablet {
+        font-size: pxToRem(24);
+    }
+
+    @include desktop {
+        font-size: pxToRem(26);
+    }
+}
+
+// ── Movie Grid ────────────────────────────────────────────────────────────────
+.trending-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: pxToRem(12);
+    margin-top: pxToRem(24);
+
+    &>* {
+        flex: 1 1 calc(50% - pxToRem(12));
+        min-width: pxToRem(130);
+        max-width: calc(50% - pxToRem(12));
+    }
+
+    @include tablet {
+        gap: pxToRem(16);
+
+        &>* {
+            flex: 1 1 calc(33.333% - pxToRem(16));
+            min-width: pxToRem(150);
+            max-width: calc(33.333% - pxToRem(16));
+        }
+    }
+
+    @include desktop {
+        gap: pxToRem(20);
+
+        &>* {
+            flex: 1 1 calc(20% - pxToRem(20));
+            min-width: pxToRem(160);
+            max-width: calc(20% - pxToRem(20));
+        }
+    }
+}
+
+.trending-card {
+    cursor: pointer;
+    transition: transform 0.25s ease;
+
+    &:hover {
+        transform: translateY(-6px);
+    }
+}
+
+.trending-poster-wrapper {
+    position: relative;
+    border-radius: pxToRem(10);
+    overflow: hidden;
+    aspect-ratio: 2/3;
+    background: $color-surface2;
+}
+
+.trending-poster {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.trending-rating {
+    position: absolute;
+    top: pxToRem(8);
+    right: pxToRem(8);
+    background: rgba($color-bg, 0.75);
+    color: $color-text;
+    padding: pxToRem(4) pxToRem(8);
+    border-radius: pxToRem(8);
+    font-family: $font-sans;
+    font-size: pxToRem(12);
+    font-weight: 600;
+    backdrop-filter: blur(4px);
+}
+
+.trending-movie-title {
+    color: $color-text;
+    font-family: $font-sans;
+    font-size: pxToRem(14);
+    margin: pxToRem(10) 0 pxToRem(2) 0;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.trending-movie-year {
+    color: $color-grey;
+    font-family: $font-sans;
+    font-size: pxToRem(13);
+    margin: 0;
+}
+
+// ── Skeleton Loading ──────────────────────────────────────────────────────────
+.trending-loading {
+    display: flex;
+    flex-wrap: wrap;
+    gap: pxToRem(12);
+    margin-top: pxToRem(24);
+
+    &>* {
+        flex: 1 1 calc(50% - pxToRem(12));
+        min-width: pxToRem(130);
+        max-width: calc(50% - pxToRem(12));
+    }
+
+    @include tablet {
+        gap: pxToRem(16);
+
+        &>* {
+            flex: 1 1 calc(33.333% - pxToRem(16));
+            min-width: pxToRem(150);
+            max-width: calc(33.333% - pxToRem(16));
+        }
+    }
+
+    @include desktop {
+        gap: pxToRem(20);
+
+        &>* {
+            flex: 1 1 calc(20% - pxToRem(20));
+            min-width: pxToRem(160);
+            max-width: calc(20% - pxToRem(20));
+        }
+    }
+}
+
+.skeleton-card {
+    aspect-ratio: 2/3;
+    border-radius: pxToRem(10);
+    background: linear-gradient(110deg,
+            rgba($color-text, 0.03) 8%,
+            rgba($color-text, 0.06) 18%,
+            rgba($color-text, 0.03) 33%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+// ── Empty State ───────────────────────────────────────────────────────────────
+.trending-empty {
+    text-align: center;
+    color: $color-grey;
+    padding: pxToRem(40) 0;
+    font-family: $font-sans;
+    font-size: pxToRem(15);
+}

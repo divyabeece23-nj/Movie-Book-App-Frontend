@@ -1,6 +1,7 @@
 import { useState } from "react";
 import MediaCard from "../components/media/MediaCard.jsx";
 import Spinner from "../components/ui/Spinner.jsx";
+import TrendingSection from "../components/TrendingSection.jsx";
 import { searchMedia } from "../api/api.js";
 import "./DiscoverPage.scss";
 
@@ -21,7 +22,7 @@ export default function DiscoverPage({ favorites, onFavoriteToggle, onCardClick 
         setResults([]);
         setSearched(true);
         try {
-            const data = await searchMedia(query, "movie"); // ✅ hardcoded "movie"
+            const data = await searchMedia(query, "movie");
             setResults(data);
         } catch (e) {
             setError(e.message);
@@ -54,6 +55,9 @@ export default function DiscoverPage({ favorites, onFavoriteToggle, onCardClick 
                     </div>
                 </div>
             </section>
+
+            {/* Trending — visible before user searches */}
+            {!searched && <TrendingSection onMovieClick={onCardClick} />}
 
             <section className="discover__results">
                 {loading && <Spinner />}
