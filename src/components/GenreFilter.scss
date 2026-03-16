@@ -1,6 +1,6 @@
-@use 'variables' as *;
-@use 'mixins' as *;
-@use 'function' as *;
+@use '../styles/variables.scss' as *;
+@use '../styles/mixins.scss' as *;
+@use '../styles/function.scss' as *;
 
 .genre-filter {
     display: flex;
