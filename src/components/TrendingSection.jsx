@@ -52,7 +52,13 @@ const TrendingSection = ({ onMovieClick }) => {
             {featured && (
                 <div
                     className="featured-movie"
-                    onClick={() => onMovieClick && onMovieClick(featured.imdbID)}
+                    onClick={() => onMovieClick && onMovieClick({
+                        imdbID: featured.imdbID,
+                        Title: featured.title,
+                        Poster: featured.poster,
+                        Year: featured.year,
+                        Type: "movie"
+                    })}
                 >
                     <div className="featured-badge">★ Movie of the Day</div>
                     <div className="featured-content">
@@ -110,7 +116,13 @@ const TrendingSection = ({ onMovieClick }) => {
                         <div
                             key={movie.imdbID}
                             className="trending-card"
-                            onClick={() => onMovieClick && onMovieClick(movie.imdbID)}
+                            onClick={() => onMovieClick && onMovieClick({
+                                imdbID: movie.imdbID,
+                                Title: movie.title,
+                                Poster: movie.poster,
+                                Year: movie.year,
+                                Type: "movie"
+                            })}
                         >
                             <div className="trending-poster-wrapper">
                                 <img
