@@ -36,10 +36,10 @@ export default function DiscoverPage({ favorites, onFavoriteToggle, onCardClick 
                 <div className="hero__bg" />
                 <div className="hero__content">
                     <h1 className="hero__title">
-                        Find. Watch.<br />Read. <em>Review.</em>
+                        Find. Watch.<br /> <em>Review.</em>
                     </h1>
                     <p className="hero__sub">
-                        Search millions of movies and books. Save favorites. Share your take.
+                        Search millions of movies. Save favorites. Share your take.
                     </p>
 
                     <div className="search-bar">
