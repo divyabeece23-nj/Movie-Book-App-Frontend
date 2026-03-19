@@ -109,7 +109,7 @@
 
 // ── Auth area ─────────────────────────────────────────────────────────────────
 .header-auth {
-    margin-left: auto;
+    // margin-left: auto;
     flex-shrink: 0;
 
     @include tablet {
@@ -148,6 +148,7 @@
     display: flex;
     align-items: center;
     gap: 12px;
+    margin-left: auto;
 }
 
 // ── Desktop nav: hide on mobile ───────────────────────────────────────────────
